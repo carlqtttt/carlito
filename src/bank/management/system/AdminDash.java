@@ -79,7 +79,7 @@ public class AdminDash extends javax.swing.JFrame {
     private void viewLogs() {
         try {
             Session sess = Session.getInstance();
-            ResultSet rs = new Conn().getData("select * from login where id != '" + sess.getSignID() + "'");
+            ResultSet rs = new Conn().getData("select * from logs where id != '" + sess.getSignID() + "'");
             usersTB.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException e) {
             System.err.println("An error occurred while fetching data: " + e.getMessage());

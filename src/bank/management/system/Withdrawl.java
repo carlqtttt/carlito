@@ -1,3 +1,4 @@
+
 package bank.management.system;
 
 import javax.swing.*;
@@ -12,11 +13,11 @@ public class Withdrawl extends JFrame implements ActionListener {
 
     JTextField amount;
     JButton withdraw, back;
-    String pinnumber;
+    String pin;
 
     Withdrawl(String pinnumber) {
 
-        this.pinnumber = pinnumber;
+        this.pin = pinnumber;
 
         setLayout(null);
 
@@ -68,7 +69,7 @@ public class Withdrawl extends JFrame implements ActionListener {
                 try {
                     // Assuming these methods and classes are properly defined
                     Session sess = Session.getInstance();
-                    String hashedPass = passwordHashing.hashPassword(pinnumber);
+                    String hashedPass = passwordHashing.hashPassword(pin);
                     Conn cn = new Conn();
 
                     // Using PreparedStatement to avoid SQL injection
@@ -96,7 +97,7 @@ public class Withdrawl extends JFrame implements ActionListener {
             }
         } else if (ae.getSource() == back) {
             setVisible(false);
-            new Transactions(pinnumber).setVisible(true);
+            new Transactions(pin).setVisible(true);
         }
     }
 

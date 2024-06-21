@@ -1,3 +1,4 @@
+
 package bank.management.system;
 
 import javax.swing.*;
@@ -11,10 +12,10 @@ import java.util.logging.Logger;
 public class Transactions extends JFrame implements ActionListener {
 
     JButton deposit, withdrawl, fastcash, ministatement, pinchange, balanceenquiry, exit;
-    String pinnumber;
+    String pin;
 
     Transactions(String pinnumber) {
-        this.pinnumber = pinnumber;
+        this.pin = pinnumber;
 
         setLayout(null);
 
@@ -82,25 +83,25 @@ public class Transactions extends JFrame implements ActionListener {
             System.exit(0);
         } else if (ae.getSource() == deposit) {
             setVisible(false);
-            new Deposit(pinnumber).setVisible(true);
+            new Deposit(pin).setVisible(true);
         } else if (ae.getSource() == withdrawl) {
             setVisible(false);
-            new Withdrawl(pinnumber).setVisible(true);
+            new Withdrawl(pin).setVisible(true);
         } else if (ae.getSource() == fastcash) {
             setVisible(false);
-            new FastCash(pinnumber).setVisible(true);
+            new FastCash(pin).setVisible(true);
         } else if (ae.getSource() == pinchange) {
             setVisible(false);
-            new PinChange(pinnumber).setVisible(true);
+            new PinChange(pin).setVisible(true);
         } else if (ae.getSource() == balanceenquiry) {
             setVisible(false);
             try {
-                new BalanceEnquiry(pinnumber).setVisible(true);
+                new BalanceEnquiry(pin).setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Transactions.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (ae.getSource() == ministatement) {
-            new MiniStatement(pinnumber).setVisible(true);
+            new MiniStatement(pin).setVisible(true);
             dispose();
         }
     }

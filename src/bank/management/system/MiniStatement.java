@@ -44,9 +44,10 @@ public class MiniStatement extends JFrame {
 
         try {
             Conn conn = new Conn();
-            ResultSet rs = conn.getData("select * from login where pin = '" + pin + "'");
+            ResultSet rs = conn.getData("select * from logs where pin = '" + pin + "'");
             if (rs.next()) {
-                card.setText("Card Number: " + rs.getString("cardnumber").substring(0, 4) + "xxxxxxxx" + rs.getString("cardnumber").substring(12));
+                
+                card.setText("Card Number: " + rs.getString("formno").substring(0, 4) + "xxxxxxxx" + rs.getString("formno").substring(12));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -57,6 +58,7 @@ public class MiniStatement extends JFrame {
             int bal = 0;
             Session sess = Session.getInstance();
             ResultSet rs = conn.getData("select * from bank where signID = '" + sess.getSignID() + "'");
+            System.out.println(sess.getSignID());
             while (rs.next()) {
                 OffsetDateTime currentDate = LocalDateTime.now().atOffset(ZoneOffset.UTC).withOffsetSameInstant(ZoneOffset.ofHours(-8));
                 String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'PST'"));

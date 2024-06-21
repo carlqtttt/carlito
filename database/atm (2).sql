@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 11:47 AM
+-- Generation Time: Jun 21, 2024 at 12:52 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -91,31 +91,59 @@ INSERT INTO `bank` (`bID`, `signID`, `pin`, `date`, `type`, `amount`) VALUES
 (54, 21, '1', 'Mon Jun 03 17:41:10 SGT 2024', 'Withdraw', '500'),
 (55, 21, '1', 'Mon Jun 03 17:43:03 SGT 2024', 'Deposit', '100'),
 (56, 21, '1', 'Mon Jun 03 17:43:12 SGT 2024', 'Deposit', '100'),
-(57, 21, '1', 'Mon Jun 03 17:43:18 SGT 2024', 'Withdraw', '100');
+(57, 21, '1', 'Mon Jun 03 17:43:18 SGT 2024', 'Withdraw', '100'),
+(58, 22, 'null', 'Fri Jun 21 15:42:50 CST 2024', 'Deposit', '1000'),
+(59, 22, '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', '2024-06-21', 'Withdraw', '100'),
+(60, 22, '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', '2024-06-21', 'Withdraw', '100'),
+(61, 22, '20', 'Fri Jun 21 16:12:31 CST 2024', 'Withdraw', '00'),
+(62, 22, '20', 'Fri Jun 21 16:12:37 CST 2024', 'Withdraw', '0'),
+(63, 22, '20', 'Fri Jun 21 16:12:43 CST 2024', 'Withdraw', '0'),
+(64, 22, '20', 'Fri Jun 21 16:12:49 CST 2024', 'Withdraw', '00'),
+(65, 22, '20', 'Fri Jun 21 16:15:04 CST 2024', 'Withdraw', '0'),
+(66, 22, 'null', 'Fri Jun 21 16:15:56 CST 2024', 'Withdraw', '0'),
+(67, 22, 'null', 'Fri Jun 21 16:16:01 CST 2024', 'Withdraw', '00'),
+(68, 22, 'null', 'Fri Jun 21 16:16:04 CST 2024', 'Withdraw', '00'),
+(69, 22, 'null', 'Fri Jun 21 16:16:07 CST 2024', 'Withdraw', '0'),
+(70, 22, '20', 'Fri Jun 21 16:16:25 CST 2024', 'Withdraw', '100'),
+(71, 22, 'null', 'Fri Jun 21 16:16:39 CST 2024', 'Withdraw', '500'),
+(72, 22, '20', 'Fri Jun 21 16:17:00 CST 2024', 'Withdraw', '00'),
+(73, 22, '20', 'Fri Jun 21 16:18:57 CST 2024', 'Deposit', '800'),
+(74, 22, 'null', 'Fri Jun 21 16:19:06 CST 2024', 'Withdraw', '500'),
+(75, 22, 'null', 'Fri Jun 21 16:19:45 CST 2024', 'Withdraw', '100'),
+(76, 22, 'null', 'Fri Jun 21 16:20:53 CST 2024', 'Withdraw', '100'),
+(77, 22, '20', 'Fri Jun 21 16:28:09 CST 2024', 'Withdraw', '100'),
+(78, 22, 'null', 'Fri Jun 21 16:29:48 CST 2024', 'Deposit', '800'),
+(79, 22, '20', 'Fri Jun 21 16:31:14 CST 2024', 'Withdraw', '100'),
+(80, 22, '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', '2024-06-21', 'Withdraw', '100'),
+(81, 22, 'null', 'Fri Jun 21 16:37:56 CST 2024', 'Withdraw', '100'),
+(82, 22, '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', '2024-06-21', 'Withdraw', '100'),
+(83, 22, '20', 'Fri Jun 21 17:07:01 CST 2024', 'Deposit', '100'),
+(84, 22, 'null', 'Fri Jun 21 17:07:10 CST 2024', 'Withdraw', '100');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `logs`
 --
 
-CREATE TABLE `login` (
+CREATE TABLE `logs` (
   `id` int(50) NOT NULL,
+  `signID` int(20) NOT NULL,
   `formno` varchar(20) NOT NULL,
-  `cardnumber` varchar(50) NOT NULL,
   `pin` varchar(100) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `logs`
 --
 
-INSERT INTO `login` (`id`, `formno`, `cardnumber`, `pin`, `status`, `type`) VALUES
-(1, '7179', '7179', 'TgdAhWK+24tgzgXB3s/jrRa3IjCWfeAfZAt+Rym0n84=', 'pending', 'admin'),
-(2, '6191', '6191', 'SyJ3d9TdH8Ycb4hPSGQdArTRIdP9Moywi1Ux/Kzav4o=', 'pending', 'admin'),
-(3, '8476', '8476', 'a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=', 'active', 'user');
+INSERT INTO `logs` (`id`, `signID`, `formno`, `pin`, `status`, `type`) VALUES
+(1, 0, '7179', 'TgdAhWK+24tgzgXB3s/jrRa3IjCWfeAfZAt+Rym0n84=', 'pending', 'admin'),
+(2, 0, '6191', 'SyJ3d9TdH8Ycb4hPSGQdArTRIdP9Moywi1Ux/Kzav4o=', 'pending', 'admin'),
+(3, 0, '8476', 'a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=', 'active', 'user'),
+(4, 0, '3588', '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', 'pending', 'admin');
 
 -- --------------------------------------------------------
 
@@ -159,7 +187,18 @@ INSERT INTO `signup` (`signID`, `formno`, `pin`, `dob`, `gender`, `email`, `type
 (18, '7179', 'TgdAhWK+24tgzgXB3s/jrRa3IjCWfeAfZAt+Rym0n84=', 'Jun 10, 2024', 'Male', '3', 'user', 'pending', 'src/UsersImage/tisoyins.jpg'),
 (19, '6191', 'SyJ3d9TdH8Ycb4hPSGQdArTRIdP9Moywi1Ux/Kzav4o=', 'Jun 19, 2024', 'Female', 'dqwweqrq@gmail.com', 'admin', 'pending', 'src/UsersImage/212.JPG'),
 (20, '8476', 'a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=', 'Jun 11, 2024', 'female', 'Jun 11, 2024', 'user', 'ACTIVE', 'src/UsersImage/gwapo.jpg'),
-(21, '4299', 'a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=', 'Jun 12, 2024', 'Male', '5', 'user', 'active', 'src/UsersImage/regun.jpg');
+(21, '4299', 'a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=', 'Jun 12, 2024', 'Male', '5', 'user', 'active', 'src/UsersImage/regun.jpg'),
+(22, '3588', '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', 'Jun 7, 2024', 'Male', 't@gmail.com', 'user', 'active', 'src/UsersImage/2.png'),
+(23, '1603', '7y0SfeN7lCuq0GFF5UsMYZofIjJ7LrvPvsePVWSv450=', 'Jun 11, 2024', 'Male', '6rwe@gmail.com', 'user', 'pending', 'src/UsersImage/Log out@1x.png'),
+(24, '1603', '7y0SfeN7lCuq0GFF5UsMYZofIjJ7LrvPvsePVWSv450=', 'Jun 11, 2024', 'Male', '6rwe@gmail.com', 'user', 'pending', 'src/UsersImage/Log out@1x.png'),
+(25, '1603', '7y0SfeN7lCuq0GFF5UsMYZofIjJ7LrvPvsePVWSv450=', 'Jun 11, 2024', 'Male', '6rwe@gmail.com', 'user', 'pending', 'src/UsersImage/Log out@1x.png'),
+(26, '7951', '47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=', 'Jun 2, 2024', 'Male', 'fase@gmail.com', 'user', 'pending', 'src/UsersImage/icons8-fish-100.png'),
+(27, '2203', '47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=', 'Jun 3, 2024', 'Male', 'dsfgs@gmail.com', 'user', 'pending', 'src/UsersImage/icons8-splash-96.png'),
+(28, '4872', '47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=', 'Jun 3, 2024', 'Male', 'asda@gmail.com', 'user', 'pending', 'src/UsersImage/Screen 1.4@1x.png'),
+(29, '4872', '9co490ih1ur3JrikL7V1w8cfGGSoFDMBeC3hPaLZICs=', 'Jun 3, 2024', 'Male', 'asda@gmail.com', 'user', 'pending', 'src/UsersImage/Screen 1.4@1x.png'),
+(30, '5528', 'TgdAhWK+24tgzgXB3s/jrRa3IjCWfeAfZAt+Rym0n84=', 'Jun 4, 2024', 'Male', 'sdag@gmail.com', 'user', 'pending', 'src/UsersImage/screen 1.2@1x.png'),
+(31, '6982', 'SyJ3d9TdH8Ycb4hPSGQdArTRIdP9Moywi1Ux/Kzav4o=', 'Jun 4, 2024', 'Male', 'fsdf@gmail.com', 'user', 'pending', 'src/UsersImage/Sign in@1x.png'),
+(32, '4929', 'SyJ3d9TdH8Ycb4hPSGQdArTRIdP9Moywi1Ux/Kzav4o=', 'Jun 4, 2024', 'Male', 'sgrt@gmail.com', 'user', 'pending', 'src/UsersImage/screen 1.2@1x.png');
 
 --
 -- Indexes for dumped tables
@@ -173,10 +212,11 @@ ALTER TABLE `bank`
   ADD KEY `FK_user` (`signID`);
 
 --
--- Indexes for table `login`
+-- Indexes for table `logs`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `signID` (`signID`);
 
 --
 -- Indexes for table `signup`
@@ -192,19 +232,19 @@ ALTER TABLE `signup`
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `bID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `bID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `logs`
 --
-ALTER TABLE `login`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `logs`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `signup`
 --
 ALTER TABLE `signup`
-  MODIFY `signID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `signID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

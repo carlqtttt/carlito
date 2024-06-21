@@ -107,14 +107,14 @@ public class Login extends JFrame implements ActionListener {
             pinTextField.setText("");
         } else if (ae.getSource() == login) {
             try {
-                String cardnumber = cardTextField.getText();
+                String formno = cardTextField.getText();
                 String pinnnumber = pinTextField.getText();
 
                 // Hash the PIN for comparison
                 String hashedPassword = passwordHashing.hashPassword(pinTextField.getText());
 
                 // Query to check card number and hashed password
-                String query = "SELECT * FROM signup WHERE formno = '" + cardnumber + "' AND pin = '" + hashedPassword + "'";
+                String query = "SELECT * FROM signup WHERE formno = '" + formno + "' AND pin = '" + hashedPassword + "'";
 
                 Conn cn = new Conn();
                 ResultSet rs = cn.getData(query);

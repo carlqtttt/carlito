@@ -32,32 +32,32 @@ public class FastCash extends JFrame implements ActionListener {
         text.setFont(new Font("System", Font.BOLD, 16));
         image.add(text);
 
-        hundred = new JButton("PHP 100");
+        hundred = new JButton("100");
         hundred.setBounds(170, 305, 150, 30);
         hundred.addActionListener(this);
         image.add(hundred);
 
-        fivehundred = new JButton("PHP 500");
+        fivehundred = new JButton("500");
         fivehundred.setBounds(350, 305, 150, 30);
         fivehundred.addActionListener(this);
         image.add(fivehundred);
 
-        onethousand = new JButton("PHP 1000");
+        onethousand = new JButton("1000");
         onethousand.setBounds(170, 340, 150, 30);
         onethousand.addActionListener(this);
         image.add(onethousand);
 
-        twothousand = new JButton("PHP 2000");
+        twothousand = new JButton("2000");
         twothousand.setBounds(350, 340, 150, 30);
         twothousand.addActionListener(this);
         image.add(twothousand);
 
-        fivethousand = new JButton("PHP 5000");
+        fivethousand = new JButton("5000");
         fivethousand.setBounds(170, 375, 150, 30);
         fivethousand.addActionListener(this);
         image.add(fivethousand);
 
-        tenthousand = new JButton("PHP 10000");
+        tenthousand = new JButton("10000");
         tenthousand.setBounds(350, 375, 150, 30);
         tenthousand.addActionListener(this);
         image.add(tenthousand);
@@ -83,20 +83,20 @@ public class FastCash extends JFrame implements ActionListener {
             setVisible(false);
             new Transactions(pinnumber).setVisible(true);
         } else {
-            String amount = ((JButton) ae.getSource()).getText().substring(3);  // Rs 500  // Minus first 3 index.
+            String amount = ((JButton) ae.getSource()).getText().substring(0);  // Rs 500  // Minus first 3 index.
             Conn c = null;
             try {
                 c = new Conn();
             } catch (SQLException ex) {
                 Logger.getLogger(FastCash.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("yawa sa taas");
             }
             try {
                 // Checking balance before Withdrawing money.
                 Session sess = Session.getInstance();
-                ResultSet rs = c.getData("select * from bank where signID = '" + sess.getSignID() + "'");
+                ResultSet rs = new Conn().getData("select * from bank where signID = '" + sess.getSignID() + "'");
                 int balance = 0;
-                while (rs.next()) {
-                    // We are looping through each rows.
+                if (rs.next()) {
                     if (rs.getString("type").equals("Deposit")) {
                         balance += Integer.parseInt(rs.getString("amount"));
                     } else if (rs.getString("type").equals("Withdraw")) {
@@ -110,7 +110,7 @@ public class FastCash extends JFrame implements ActionListener {
                 }
 
                 Date date = new Date();
-                c.insertData("insert into bank (signID, pin, date, type, amount)"
+                new Conn().insertData("insert into bank (signID, pin, date, type, amount)"
                         + "values('" + sess.getSignID() + "','" + pinnumber + "','" + date + "','Withdraw','" + amount + "')");
                 JOptionPane.showMessageDialog(null, "₱ " + amount + " Withdrawn Successfully");
 
@@ -118,6 +118,7 @@ public class FastCash extends JFrame implements ActionListener {
                 new Transactions(pinnumber).setVisible(true);
             } catch (Exception e) {
                 System.out.println(e);
+                System.out.println("YAWA");
             }
         }
     }

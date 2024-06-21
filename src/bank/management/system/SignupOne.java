@@ -183,7 +183,6 @@ public class SignupOne extends JFrame implements ActionListener {
 
         // Existing actionPerformed code for "Next" button
         String formno = "" + random;  // String <---- long
-        String cardnumber = "" + random;
         String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
         String gender = null;
         if (male.isSelected()) {
@@ -214,11 +213,12 @@ public class SignupOne extends JFrame implements ActionListener {
         try {
             Conn c = new Conn();
             String xxpin = passwordHashing.hashPassword(pinTextField.getText());
-            c.insertData("insert into signup (formno, dob, gender, email, type, pin, status, image) "
-                    + "values('" + formno + "',"
+            c.insertData("insert into signup (signID,formno, dob, gender, email, type, pin, status, image) "
+                    + "values('"+ Session.getInstance().getSignID() +"','" + formno + "',"
                     + "'" + dob + "','" + gender + "', '" + email + "', '" + xtype + "','" + xxpin + "', 'pending', '" + destination + "')");
 
-            c.insertData("insert into login (formno, cardnumber, pin, status, type) values('" + formno + "', '" + cardnumber + "', '" + xxpin + "', 'pending', '" + xtype + "')");
+            c.insertData("insert into logs (signID,formno, pin, status, type) values('"+ Session.getInstance().getSignID() +"','" + formno + "','"
+                    + xxpin + "', 'pending', '" + xtype + "')");
 
             if (destination != null && imagePath != null) {
                 Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
